@@ -23,13 +23,4 @@ public class Todo {
     @Column(name="completed")
     private boolean completed = false;
 
-    Todo(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    Todo(String title) {
-        this.title = title;
-    }
-
 }
