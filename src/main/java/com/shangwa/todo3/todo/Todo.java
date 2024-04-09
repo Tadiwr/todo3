@@ -1,4 +1,4 @@
-package com.shangwa.todo3.model;
+package com.shangwa.todo3.todo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
