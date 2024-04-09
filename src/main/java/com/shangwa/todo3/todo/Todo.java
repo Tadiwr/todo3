@@ -1,4 +1,4 @@
-package com.shangwa.todo3.model;
+package com.shangwa.todo3.todo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,14 +22,5 @@ public class Todo {
 
     @Column(name="completed")
     private boolean completed = false;
-
-    Todo(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    Todo(String title) {
-        this.title = title;
-    }
 
 }
