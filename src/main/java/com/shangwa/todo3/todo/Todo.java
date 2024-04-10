@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
 @Data
@@ -24,3 +25,5 @@ public class Todo {
     private boolean completed = false;
 
 }
+
+
