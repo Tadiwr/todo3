@@ -29,6 +29,24 @@ public class TodoController {
         return service.allTodos(ztoa);
     }
 
+    @GetMapping("/last")
+    public ResponseEntity<Todo> getLastAddedTodo() {
+        Optional<Todo> todo = service.getLastAddedTodo();
+
+        return todo.map(ResponseEntity::ok).orElseGet(() -> 
+            ResponseEntity.notFound().build()
+        );
+    }
+
+    @GetMapping("/first")
+    public ResponseEntity<Todo> getFirstAddedTodo() {
+        Optional<Todo> todo = service.getFirstAddedTodo();
+
+        return todo.map(ResponseEntity::ok).orElseGet(() -> 
+            ResponseEntity.notFound().build()
+        );
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getTodoById(@PathVariable Long id) {
         Optional<Todo> todo = service.getTodoById(id);

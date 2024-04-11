@@ -64,6 +64,28 @@ public class TodoService {
         thisTodo.setCompleted(false);
         this.todoRepo.save(thisTodo);
     }
+
+    public Optional<Todo> getLastAddedTodo() {
+
+        List<Todo> models = this.allTodos(true);
+
+        if (models.size() > 0) {
+            return Optional.ofNullable(models.get(0));
+        }
+
+        return null;
+    }
+
+    public Optional<Todo> getFirstAddedTodo() {
+
+        List<Todo> models = this.allTodos(false);
+
+        if (models.size() > 0) {
+            return Optional.ofNullable(models.get(0));
+        }
+
+        return null;
+    }
 }
 
 
