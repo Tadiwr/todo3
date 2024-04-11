@@ -2,6 +2,7 @@ package com.shangwa.todo3.todo;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,17 @@ public class TodoService {
     @Autowired
     private TodoRepostitory todoRepo;
 
-    public List<Todo> allTodos() {
+    public List<Todo> allTodos(boolean shouldSortDec) {
 
-        return (List<Todo>) todoRepo.findAll();
+        List<Todo> models = (List<Todo>) todoRepo.findAll();
+
+        if (shouldSortDec) {
+            models = models.stream()
+                .sorted((model1, model2) -> Long.compare(model2.getId(), model1.getId()))
+                .collect(Collectors.toList());
+        }
+
+        return models;
         
     }
 

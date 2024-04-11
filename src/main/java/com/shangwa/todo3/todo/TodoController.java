@@ -25,9 +25,8 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping
-    public List<Todo> all(@RequestParam(name="atoz", required=false) boolean atoz ) {
-        return service.allTodos();
-    
+    public List<Todo> all(@RequestParam(name="ztoa", required=false) boolean ztoa ) {
+        return service.allTodos(ztoa);
     }
 
     @GetMapping("/{id}")
