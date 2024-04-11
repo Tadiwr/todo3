@@ -31,9 +31,9 @@ public class TodoService {
         return todoRepo.findById(id);
     }
 
-    public String addTodo(Todo t) {
-        this.todoRepo.save(t);
-        return "ceated successfuly";
+    public Todo addTodo(Todo t) {
+        Todo todo = this.todoRepo.save(t);
+        return todo;
     }
 
     public void deleteTodoWithId(Long id) {
