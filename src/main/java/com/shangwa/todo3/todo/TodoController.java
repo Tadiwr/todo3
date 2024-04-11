@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -24,8 +25,9 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping
-    public List<Todo> all() {
-        return service.allTodos();  
+    public List<Todo> all(@RequestParam(name="atoz", required=false) boolean atoz ) {
+        return service.allTodos();
+    
     }
 
     @GetMapping("/{id}")
@@ -38,16 +40,18 @@ public class TodoController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addTodo(@RequestBody Todo todo) {
-        String res = service.addTodo(todo);
-        return ResponseEntity.ok(res);
+    public void addTodo(@RequestBody Todo todo) {
+        service.addTodo(todo);
     }
-
-    
 
     @DeleteMapping("/delete")
     public void deleteTodoById(@RequestBody DeleteByIdReqBody body) {
         service.deleteTodoWithId(body.todoId);
+    }
+
+    @DeleteMapping("/delete/all")
+    public void deleteAllTodos() {
+        service.deleteAllTodos();
     }
 
     @PostMapping("/update")

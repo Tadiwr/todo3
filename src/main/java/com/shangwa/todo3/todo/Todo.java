@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
 @Data
@@ -18,7 +17,7 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="title")
+    @Column(name="title", nullable=false)
     private String title;
 
     @Column(name="completed")

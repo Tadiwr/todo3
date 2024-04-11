@@ -13,7 +13,9 @@ public class TodoService {
     private TodoRepostitory todoRepo;
 
     public List<Todo> allTodos() {
+
         return (List<Todo>) todoRepo.findAll();
+        
     }
 
     public Optional<Todo> getTodoById(Long id) {
